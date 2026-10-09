@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Place this file at:
+    SalesSystemWebApp/META-INF/context.xml
+
+  What it does:
+  - landingPage: if the session note used for FORM auth is missing or stale
+    (e.g. Tomcat was restarted, or the browser sent an old JSESSIONID cookie),
+    Tomcat redirects here instead of throwing the raw 408 error page.
+  - changeSessionIdOnAuthentication is left at its secure default (true).
+    Do NOT set it to false permanently just to "fix" the 408 - that disables
+    Tomcat's session-fixation protection. Only useful as a temporary diagnostic
+    if the landingPage fix alone doesn't resolve it.
+-->
+<Context>
+
+    <Valve className="org.apache.catalina.authenticator.FormAuthenticator"
+           landingPage="/dashboard.do" />
+
+</Context>

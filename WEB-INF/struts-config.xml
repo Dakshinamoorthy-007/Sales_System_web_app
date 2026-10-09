@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts-config>
+
+    <!-- ========================= -->
+    <!-- Form Beans -->
+    <!-- ========================= -->
+
+    <form-beans>
+
+        <form-bean
+                name="uploadForm"
+                type="form.UploadForm"/>
+
+    </form-beans>
+
+    <!-- ========================= -->
+    <!-- Action Mappings -->
+    <!-- ========================= -->
+
+    <action-mappings>
+
+        <action
+                path="/dashboard"
+                type="action.DashboardAction"
+                scope="request"
+                validate="false">
+
+            <forward
+                    name="success"
+                    path="/dashboard.jsp"/>
+
+        </action>
+
+        <action
+                path="/upload"
+                type="action.UploadAction"
+                name="uploadForm"
+                scope="request"
+                validate="false">
+
+            <forward
+                    name="success"
+                    path="/upload.jsp"/>
+
+            <forward
+                    name="failure"
+                    path="/upload.jsp"/>
+
+        </action>
+
+        <action
+                path="/report"
+                type="action.ReportAction"
+                scope="request"
+                validate="false">
+
+            <forward
+                    name="success"
+                    path="/reports.jsp"/>
+
+        </action>
+
+    </action-mappings>
+
+</struts-config>
